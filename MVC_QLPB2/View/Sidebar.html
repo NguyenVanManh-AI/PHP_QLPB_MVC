@@ -1,0 +1,49 @@
+
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+*{
+    list-style: none;
+    text-decoration: none;
+    margin:0;
+    padding:0;
+}
+li{
+    font-size:14px;
+    font-weight: bold;
+}
+ul {
+    padding: 10px 20px;
+}
+.alert{
+    margin-bottom: 3px;
+}
+</style>
+<div>
+<ul>
+    <?php
+
+        $display = 'none';
+        $check = (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
+        if(!$check){
+            $display = 'none';
+        }
+        else {
+            $display = 'block';
+        }
+        
+        echo "<li class='alert alert-success' role='alert' ><a href='../index.php'><i class='fa-solid fa-house-user'></i> Trang chủ</a></li>";
+        echo "<li class='alert alert-success' role='alert' ><a href='../Controller/C_Nhanvien.php'><i class='fa-solid fa-users'></i> Xem nhân viên</a></li>";
+        echo "<li class='alert alert-success' role='alert' ><a href='../Controller/C_Phongban.php'><i class='fa-sharp fa-solid fa-bars'></i> Xem Phòng ban</a></li>";
+        echo "<li class='alert alert-success' role='alert' ><a href='../Controller/C_Nhanvien.php?list_search=1'><i class='fa-solid fa-magnifying-glass'></i> Tìm kiếm</a></li>";
+        echo "<li class='alert alert-success' role='alert' style='display: $display'><a href='../Controller/C_Phongban.php?list_update=1'><i class='fa-solid fa-pen-to-square'></i> Cập nhật thông tin</a></li>";
+        echo "<li class='alert alert-success' role='alert' style='display: $display'><a href='../Controller/C_Nhanvien.php?list_delete=1'><i class='fa-solid fa-trash-can'></i> Xóa thông tin</a></li>";
+        echo "<li class='alert alert-success' role='alert' style='display: $display'><a href='../Controller/C_Nhanvien.php?list_delete_all=1'><i class='fa-solid fa-trash'></i> Xóa tất cả</a></li>";
+        echo "<li class='alert alert-success' role='alert' ><a href='../Controller/C_Nhanvien.php?help=1'><i class='fa-solid fa-circle-info'></i> Trợ giúp chương trình</a></li>";
+        echo "<li class='alert alert-danger' role='alert'  style='display: $display'><a href='../Controller/C_Admin.php?logout=1'><i class='fa-solid fa-right-from-bracket'></i> Đăng xuất</a></li>";
+
+    ?>
+</ul>
+</div>
+</html>
